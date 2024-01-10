@@ -1,0 +1,26 @@
+{
+  "name": "@huamu/wx-kit",
+  "version": "0.0.1",
+  "description": "微信小程序工具包，对原生微信小程序api 进行二次封装，使之更加易用，减少开发量",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "rollup -cw",
+    "build": "rollup -c",
+    "lint": "eslint --fix --ext .js,.cjs src"
+  },
+  "keywords": [
+    "微信小程序"
+  ],
+  "author": "wangkj",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.1.1",
+    "rollup": "^4.9.4"
+  }
+}
