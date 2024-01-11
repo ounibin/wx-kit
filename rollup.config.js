@@ -8,6 +8,10 @@ export default {
     {
       file: 'dist/es/index.js',
       format: 'es'
+    },
+    {
+      file: 'example/lib/wx-kit.js',
+      format: 'cjs'
     }
   ]
 }
