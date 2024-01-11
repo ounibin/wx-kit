@@ -1,5 +1,5 @@
-import request from './request'
+import net from './net'
 
 export default {
-  request
+  net
 }
