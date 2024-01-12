@@ -1,48 +1,30 @@
-// index.js
-const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+import { net, common } from '../../lib/wx-kit'
 
 Component({
   data: {
-    motto: 'Hello World',
-    userInfo: {
-      avatarUrl: defaultAvatarUrl,
-      nickName: ''
-    },
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile'),
-    canIUseNicknameComp: wx.canIUse('input.type.nickname')
+    openId: getApp().globalData.openId
   },
   methods: {
-    handleTest () {
-      console.log('测试一下')
+    getGlobalData () {
+      const globalData = getApp().globalData
+      console.log('wk-log: globalData===', globalData)
     },
-    onChooseAvatar (e) {
-      const { avatarUrl } = e.detail
-      const { nickName } = this.data.userInfo
-      this.setData({
-        'userInfo.avatarUrl': avatarUrl,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl
-      })
-    },
-    onInputChange (e) {
-      const nickName = e.detail.value
-      const { avatarUrl } = this.data.userInfo
-      this.setData({
-        'userInfo.nickName': nickName,
-        hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl
-      })
-    },
-    getUserProfile (e) {
-      // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-      wx.getUserProfile({
-        desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-        success: (res) => {
+    getDeviceId () {
+      wx.getSystemInfo({
+        success: function (res) {
           console.log(res)
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
+          console.log('wk-log: 设备信息===', `${res.model}_${res.system}`)
         }
+      })
+    },
+
+    // 登录
+    getOpenId () {
+      common.getOpenId('wx23516bd221490d76', '24598cb1e0b8ed7fa3bce2cb792dbb83').then((res) => {
+        console.log('wk-log: openid===', res)
+        this.setData({
+          openId: res
+        })
       })
     }
   }

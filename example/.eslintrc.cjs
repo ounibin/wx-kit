@@ -2,7 +2,8 @@ module.exports = {
   globals: {
     wx: 'readonly',
     App: 'readonly',
-    Component: 'readonly'
+    Component: 'readonly',
+    getApp: 'readonly'
   },
   rules: {
   }

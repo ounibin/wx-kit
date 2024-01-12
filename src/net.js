@@ -1,4 +1,4 @@
-function request (options, showLoading = false) {
+export function request (options, showLoading = false) {
   return new Promise((resolve, reject) => {
     // 如果需要显示加载提示，则显示
     showLoading && wx.showLoading({
@@ -21,7 +21,7 @@ function request (options, showLoading = false) {
   })
 }
 
-function get (url, params, showLoading = false) {
+export function get (url, params, showLoading = false) {
   return request({
     method: 'GET',
     url,
@@ -29,16 +29,10 @@ function get (url, params, showLoading = false) {
   }, showLoading)
 }
 
-function post (url, data, showLoading = false) {
+export function post (url, data, showLoading = false) {
   return request({
     method: 'POST',
     url,
     data
   }, showLoading)
-}
-
-export default {
-  request,
-  get,
-  post
 }

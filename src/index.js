@@ -1,7 +1,7 @@
-import net from './net'
-import common from './common'
+import * as net from './net'
+import * as tool from './tool'
 
 export default {
   net,
-  common
+  tool
 }
